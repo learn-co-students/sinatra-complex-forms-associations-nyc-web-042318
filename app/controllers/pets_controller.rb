@@ -39,14 +39,9 @@ class PetsController < ApplicationController
       @owner=Owner.create(name: params["owner"]["name"])
       @pet.update(owner: @owner)
     else
-      #elsif params["pet"]["owner_id"]
       @owner=Owner.find_by(id: params["pet"]["owner_id"])
       @pet.update(owner: @owner)
     end
-
-    # if !params["owner"]["name"].empty?
-    #   @pet.owner=Owner.create(name: params["owner"]["name"])
-    # end
     redirect to "pets/#{@pet.id}"
   end
 end
